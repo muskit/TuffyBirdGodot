@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://ni72jf0bcovg"]
+
+[ext_resource type="Texture2D" uid="uid://cpvhrxtrce115" path="res://Sprites/Pipe.png" id="1_rkw3s"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rc8is"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4o1ab"]
+size = Vector2(120, 1933)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gnrdh"]
+size = Vector2(138.25, 69.5)
+
+[node name="Pipe" type="Node2D"]
+
+[node name="StaticBody2D Top" type="StaticBody2D" parent="."]
+rotation = 3.14159
+physics_material_override = SubResource("PhysicsMaterial_rc8is")
+
+[node name="Sprite" type="Sprite2D" parent="StaticBody2D Top"]
+position = Vector2(0, 400)
+scale = Vector2(3, 3)
+texture = ExtResource("1_rkw3s")
+
+[node name="skinny long bottom" type="CollisionShape2D" parent="StaticBody2D Top"]
+position = Vector2(0, 1150.5)
+shape = SubResource("RectangleShape2D_4o1ab")
+
+[node name="top" type="CollisionShape2D" parent="StaticBody2D Top"]
+position = Vector2(-0.125, 149.25)
+shape = SubResource("RectangleShape2D_gnrdh")
+
+[node name="StaticBody2D Bottom" type="StaticBody2D" parent="."]
+physics_material_override = SubResource("PhysicsMaterial_rc8is")
+
+[node name="Sprite" type="Sprite2D" parent="StaticBody2D Bottom"]
+position = Vector2(0, 400)
+scale = Vector2(3, 3)
+texture = ExtResource("1_rkw3s")
+
+[node name="skinny long bottom" type="CollisionShape2D" parent="StaticBody2D Bottom"]
+position = Vector2(0, 1150.5)
+shape = SubResource("RectangleShape2D_4o1ab")
+
+[node name="top" type="CollisionShape2D" parent="StaticBody2D Bottom"]
+position = Vector2(-0.125, 149.25)
+shape = SubResource("RectangleShape2D_gnrdh")

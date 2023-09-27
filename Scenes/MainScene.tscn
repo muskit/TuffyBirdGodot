@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=3 uid="uid://0a48i7ikaomx"]
+
+[ext_resource type="Texture2D" uid="uid://bfprom0d4gvek" path="res://Sprites/background.png" id="1_s6r44"]
+[ext_resource type="PackedScene" uid="uid://ni72jf0bcovg" path="res://Things/Pipe.tscn" id="2_r3xv1"]
+[ext_resource type="Texture2D" uid="uid://mw2efxm6d0l5" path="res://Sprites/Tuffy_jump.png" id="2_tuaxx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kdm8x"]
+size = Vector2(105, 105)
+
+[node name="MainScene" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_s6r44")
+
+[node name="Anchor" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SamplePipe" parent="Anchor" instance=ExtResource("2_r3xv1")]
+
+[node name="RigidBody2D Player" type="RigidBody2D" parent="Anchor"]
+
+[node name="Sprite" type="Sprite2D" parent="Anchor/RigidBody2D Player"]
+scale = Vector2(3, 3)
+texture = ExtResource("2_tuaxx")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor/RigidBody2D Player"]
+position = Vector2(1.5, 1.5)
+shape = SubResource("RectangleShape2D_kdm8x")
