@@ -1,9 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://ni72jf0bcovg"]
+[gd_scene load_steps=6 format=3 uid="uid://ni72jf0bcovg"]
 
 [ext_resource type="Script" path="res://Scripts/Pipe.cs" id="1_g2rcr"]
 [ext_resource type="Texture2D" uid="uid://cpvhrxtrce115" path="res://Sprites/Pipe.png" id="1_rkw3s"]
-
-[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rc8is"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4o1ab"]
 size = Vector2(120, 1933)
@@ -14,12 +12,12 @@ size = Vector2(138.25, 69.5)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6djaf"]
 size = Vector2(32, 228)
 
-[node name="Pipe" type="Node2D"]
+[node name="Pipe" type="Node2D" node_paths=PackedStringArray("scoringGap")]
 script = ExtResource("1_g2rcr")
+scoringGap = NodePath("Area2D")
 
 [node name="StaticBody2D TopPipe" type="StaticBody2D" parent="."]
 rotation = 3.14159
-physics_material_override = SubResource("PhysicsMaterial_rc8is")
 
 [node name="Sprite" type="Sprite2D" parent="StaticBody2D TopPipe"]
 position = Vector2(0, 400)
@@ -35,7 +33,6 @@ position = Vector2(-0.125, 149.25)
 shape = SubResource("RectangleShape2D_gnrdh")
 
 [node name="StaticBody2D BtmPipe" type="StaticBody2D" parent="."]
-physics_material_override = SubResource("PhysicsMaterial_rc8is")
 
 [node name="Sprite" type="Sprite2D" parent="StaticBody2D BtmPipe"]
 position = Vector2(0, 400)
@@ -50,8 +47,8 @@ shape = SubResource("RectangleShape2D_4o1ab")
 position = Vector2(-0.125, 149.25)
 shape = SubResource("RectangleShape2D_gnrdh")
 
-[node name="StaticBody2D Score" type="StaticBody2D" parent="."]
+[node name="Area2D" type="Area2D" parent="."]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D Score"]
-position = Vector2(53, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(106, 0)
 shape = SubResource("RectangleShape2D_6djaf")

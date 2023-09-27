@@ -4,22 +4,21 @@ public partial class PipeSpawner : Node2D
 {
     [Export]
     public PackedScene pipe;
+    public Timer spawnTimer;
+
     public float spawnTime = 2f;
-    public float bottomRange = -4f;
-    public float topRange = 6f;
+    public float bottomRange = -220f;
+    public float topRange = 220f;
     // Start is called before the first frame update
-    void Start()
+    public override void _Ready()
     {
-        // load Pipe scene that we instantiate
-        // pipe = GD.Load<PackedScene>("res://Things/Pipe.tscn");
-        
         // InvokeRepeating("SpawnPipe", 0f, spawnTime);
-        var t = new Timer();
-        AddChild(t);
-        t.Timeout += SpawnPipe;
-        t.WaitTime = spawnTime;
-        t.OneShot = false;
-        t.Start();
+        spawnTimer = new Timer();
+        AddChild(spawnTimer);
+        spawnTimer.Timeout += SpawnPipe;
+        spawnTimer.WaitTime = spawnTime;
+        spawnTimer.OneShot = false;
+        spawnTimer.Start();
     }
 
     void SpawnPipe(){
