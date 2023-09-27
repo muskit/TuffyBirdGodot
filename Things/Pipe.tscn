@@ -1,5 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://ni72jf0bcovg"]
+[gd_scene load_steps=7 format=3 uid="uid://ni72jf0bcovg"]
 
+[ext_resource type="Script" path="res://Scripts/Pipe.cs" id="1_g2rcr"]
 [ext_resource type="Texture2D" uid="uid://cpvhrxtrce115" path="res://Sprites/Pipe.png" id="1_rkw3s"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_rc8is"]
@@ -10,37 +11,47 @@ size = Vector2(120, 1933)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gnrdh"]
 size = Vector2(138.25, 69.5)
 
-[node name="Pipe" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6djaf"]
+size = Vector2(32, 228)
 
-[node name="StaticBody2D Top" type="StaticBody2D" parent="."]
+[node name="Pipe" type="Node2D"]
+script = ExtResource("1_g2rcr")
+
+[node name="StaticBody2D TopPipe" type="StaticBody2D" parent="."]
 rotation = 3.14159
 physics_material_override = SubResource("PhysicsMaterial_rc8is")
 
-[node name="Sprite" type="Sprite2D" parent="StaticBody2D Top"]
+[node name="Sprite" type="Sprite2D" parent="StaticBody2D TopPipe"]
 position = Vector2(0, 400)
 scale = Vector2(3, 3)
 texture = ExtResource("1_rkw3s")
 
-[node name="skinny long bottom" type="CollisionShape2D" parent="StaticBody2D Top"]
+[node name="skinny long bottom" type="CollisionShape2D" parent="StaticBody2D TopPipe"]
 position = Vector2(0, 1150.5)
 shape = SubResource("RectangleShape2D_4o1ab")
 
-[node name="top" type="CollisionShape2D" parent="StaticBody2D Top"]
+[node name="top" type="CollisionShape2D" parent="StaticBody2D TopPipe"]
 position = Vector2(-0.125, 149.25)
 shape = SubResource("RectangleShape2D_gnrdh")
 
-[node name="StaticBody2D Bottom" type="StaticBody2D" parent="."]
+[node name="StaticBody2D BtmPipe" type="StaticBody2D" parent="."]
 physics_material_override = SubResource("PhysicsMaterial_rc8is")
 
-[node name="Sprite" type="Sprite2D" parent="StaticBody2D Bottom"]
+[node name="Sprite" type="Sprite2D" parent="StaticBody2D BtmPipe"]
 position = Vector2(0, 400)
 scale = Vector2(3, 3)
 texture = ExtResource("1_rkw3s")
 
-[node name="skinny long bottom" type="CollisionShape2D" parent="StaticBody2D Bottom"]
+[node name="skinny long bottom" type="CollisionShape2D" parent="StaticBody2D BtmPipe"]
 position = Vector2(0, 1150.5)
 shape = SubResource("RectangleShape2D_4o1ab")
 
-[node name="top" type="CollisionShape2D" parent="StaticBody2D Bottom"]
+[node name="top" type="CollisionShape2D" parent="StaticBody2D BtmPipe"]
 position = Vector2(-0.125, 149.25)
 shape = SubResource("RectangleShape2D_gnrdh")
+
+[node name="StaticBody2D Score" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D Score"]
+position = Vector2(53, 0)
+shape = SubResource("RectangleShape2D_6djaf")
