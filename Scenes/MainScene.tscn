@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://0a48i7ikaomx"]
+[gd_scene load_steps=13 format=3 uid="uid://0a48i7ikaomx"]
 
 [ext_resource type="Script" path="res://Scripts/AudioScript.cs" id="1_g7pxj"]
 [ext_resource type="Texture2D" uid="uid://bfprom0d4gvek" path="res://Sprites/background.png" id="1_s6r44"]
@@ -12,7 +12,10 @@
 [ext_resource type="Texture2D" uid="uid://3shdpwjyp3ai" path="res://Sprites/Tuffy_fall.png" id="6_qinvp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kdm8x"]
-size = Vector2(78, 90)
+size = Vector2(81, 92)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6fdvb"]
+size = Vector2(100, 100)
 
 [node name="MainScene" type="Control"]
 layout_mode = 3
@@ -69,5 +72,19 @@ scale = Vector2(3, 3)
 texture = ExtResource("2_tuaxx")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor/RigidBody2D Player"]
-position = Vector2(0, 6)
+position = Vector2(1.5, 4)
 shape = SubResource("RectangleShape2D_kdm8x")
+
+[node name="TopGuard" type="StaticBody2D" parent="Anchor"]
+position = Vector2(0, -360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor/TopGuard"]
+position = Vector2(0, -50)
+shape = SubResource("RectangleShape2D_6fdvb")
+
+[node name="BottomGuard" type="StaticBody2D" parent="Anchor"]
+position = Vector2(0, 360)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Anchor/BottomGuard"]
+position = Vector2(0, 50)
+shape = SubResource("RectangleShape2D_6fdvb")

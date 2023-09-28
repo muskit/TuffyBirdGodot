@@ -33,6 +33,7 @@ public partial class Player : RigidBody2D
     {
         player = this;
         this.BodyEntered += OnCollisionEnter2D;
+        LinearVelocity = Vector2.Up * 1.5f * jumpVelocity;
     }
 
     // Update is called once per frame
@@ -49,11 +50,11 @@ public partial class Player : RigidBody2D
         }
 
         //checks if the velocity (on the y axis) is less or greater than zero and changes the sprite accordingly
-        if (LinearVelocity.Y > 0)
+        if (LinearVelocity.Y <= 0)
         {
-            sprite.Texture = jumping;
-        }else{
             sprite.Texture = falling;
+        }else{
+            sprite.Texture = jumping;
         }
     }
 
